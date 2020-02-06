@@ -99,6 +99,7 @@ namespace FASTER
         }
         #endregion
         
+        
         #region WindowEvents
         private void MetroWindow_Initialized(object sender, EventArgs e)
         {
@@ -111,6 +112,7 @@ namespace FASTER
             else
             { Close(); }
         }
+        
 
         private void MetroWindow_Loaded(object sender, EventArgs e)
         {
@@ -392,28 +394,7 @@ namespace FASTER
         //FIX for issue #22 not necessary
         private bool CheckAdmin()
         {
-            try
-            {
-                using WindowsIdentity identity  = WindowsIdentity.GetCurrent();
-                WindowsPrincipal      principal = new WindowsPrincipal(identity);
-                if (!principal.IsInRole(WindowsBuiltInRole.Administrator))
-                {
-                    MessageBox.Show("Application must be run as administrator",
-                                    "Error",
-                                    MessageBoxButton.OK,
-                                    MessageBoxImage.Error);
-                    return false;
-                }
-                return true;
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Unable to determine administrator status",
-                                "Error",
-                                MessageBoxButton.OK,
-                                MessageBoxImage.Error);
-                throw;
-            }
+            return true;
         }
 
         public void LoadServerProfiles()
